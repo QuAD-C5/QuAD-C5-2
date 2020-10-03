@@ -14,13 +14,15 @@ class FreeLancerList extends Component {
     axios.get("http://127.0.0.1:3008/application")
       .then((res) => this.setState({FreeLancers: res.data}))
       .catch((err) => console.log("[client side err]", err));
+      console.log(this.state.freelancer)
     }
 
   render() {
     console.log("this");
     console.log("this FreeLancerList", this.state.FreeLancers);
     const FreelancerApplied = this.state.FreeLancers.map((freelancer, key) => {
-     
+
+
       return (
         <tr key={key}>
           <th scope="row">{freelancer.id}</th>
