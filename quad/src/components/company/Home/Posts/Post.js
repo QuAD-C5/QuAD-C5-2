@@ -72,60 +72,64 @@ class Post extends Component {
     console.log("this company ", this.props.company);
     const offers = this.props.offers;
     const post = offers.map((elm, key) => (
-      <Row key={key} className="container">
-        <Card className="feedCard" body>
-          <div className="feedCardS">
-            <Card>
-              <CardBody>
-                <CardTitle>{elm.Name} name</CardTitle>
-                <CardSubtitle>{elm.JobTitle} titel</CardSubtitle>
-
-              </CardBody>
-              <CardBody>
-                <CardText>{elm.Description}</CardText>
-                <Button className="freelancerApplied" color="danger">
-                  Delete post
-                </Button>
-                <Button
-                  onClick={this.openModalByClick.bind(this)}
-                  className="freelancerApplied"
-                  color="info"
-                >
-                  Freelancer applied
-                </Button>
-              </CardBody>
-            </Card>
-          </div>
-        </Card>
-
-        <Modal isOpen={this.state.openModal === true}>
-          <ModalHeader>Modal title</ModalHeader>
-
-          <Card>
-            <CardImg
-              top
-              width="100%"
-              src="/assets/318x180.svg"
-              alt="Card image cap"
-            />
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle>Card subtitle</CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </CardText>
-              <Button>Button</Button>
-            </CardBody>
+      <div >
+        <Row key={key} className="container">
+          <Card className="feedCard" body>
+            <div className="feedCardS">
+              <Card color="muted" className="cardC">
+                <CardBody>
+                  <CardTitle>{elm.Name} name</CardTitle>
+                  <CardSubtitle>{elm.JobTitle} titel</CardSubtitle>
+                </CardBody>
+                <CardBody>
+                  <CardText>{elm.Description}</CardText>
+                  <Button className="freelancerApplied" color="danger">
+                    Delete post
+                  </Button> 
+                  <Button
+                    onClick={this.openModalByClick.bind(this)}
+                    className="freelancerApplied"
+                    color="info"
+                  >
+                    Freelancer applied
+                  </Button>
+                </CardBody>
+              </Card>
+            </div>
           </Card>
 
-          <ModalFooter>
-            <Button color="danger" onClick={this.closeModalByClick.bind(this)}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </Row>
+          {/* <Modal isOpen={this.state.openModal === true}>
+            <ModalHeader>Modal title</ModalHeader>
+
+            <Card>
+              <CardImg
+                top
+                width="100%"
+                src="/assets/318x180.svg"
+                alt="Card image cap"
+              />
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardSubtitle>Card subtitle</CardSubtitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </CardText>
+                <Button>Button</Button>
+              </CardBody>
+            </Card>
+
+            <ModalFooter>
+              <Button
+                color="danger"
+                onClick={this.closeModalByClick.bind(this)}
+              >
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal> */}
+        </Row>
+      </div>
     ));
   
     
