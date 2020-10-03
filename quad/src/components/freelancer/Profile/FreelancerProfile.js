@@ -11,7 +11,7 @@ class FreelancerProfile extends React.Component {
       profileType: 1 };
     this.handelEditProfil = this.handelEditProfil.bind(this);
     this.handelPublicProfile = this.handelPublicProfile.bind(this);
-    this.callbackFunction = this.callbackFunction.bind(this)
+    // // this.callbackFunction = this.callbackFunction.bind(this)
   }
 
 componentDidMount(){

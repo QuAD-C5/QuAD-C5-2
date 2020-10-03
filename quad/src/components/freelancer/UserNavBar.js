@@ -13,11 +13,10 @@ export default class UserNavBar extends Component {
 constructor(props) {
   super(props);
 
-  this.logoutFunc= this.logoutFunc.bind(this);
+  // this.logoutFunc= this.logoutFunc.bind(this);
 }
 
   logoutFunc = () => {
-    console.log('kgpkrp',this.props.logoutFunc)
     this.props.logoutFunc()
 }
 
@@ -43,7 +42,7 @@ constructor(props) {
             </li>
             <li className="Ubtn">
               <Link to="/Aplications" className="Ulink" >
-                Aplications
+                Applications
                       </Link>
             </li>
             <li className="Ubtn">

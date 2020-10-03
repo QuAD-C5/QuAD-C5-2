@@ -22,7 +22,9 @@ class EditProfile extends React.Component {
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
   
- 
+
+   
+   
 
   handleChange(event) {
     if(event.target.value){

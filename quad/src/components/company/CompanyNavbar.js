@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 
 
 class CompanyNavbar extends Component {
+
+
+
+
+  logoutFunc = () => {
+    this.props.logoutFunc()
+}
+
     render(props) {
         return (
           <nav>
@@ -25,7 +33,7 @@ class CompanyNavbar extends Component {
                   </Link>
                 </li>
                 <li className="Ubtn">
-                  <Link to="/logout" className="Ulink">
+                  <Link to="/logout" className="Ulink" onClick={this.logoutFunc}>
                     Log out
                   </Link>
                 </li>

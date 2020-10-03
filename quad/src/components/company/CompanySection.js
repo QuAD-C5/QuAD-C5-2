@@ -12,11 +12,12 @@ import Post from "./Home/Posts/Post";
 
 export default class CompanySection extends Component {
 
+ 
     render() {
         return (
           <Router>
-            <CompanyNavbar />
-            <Route exact path="/" component={Home}/>
+            <CompanyNavbar logoutFunc={this.props.logoutFunc} />
+            <Route exact path="/" render={() => <Home company={this.props.company} />}/>
             <Route path="/Profile" component={Profile} />
             <Route path="/logout" component={Profile} />
           </Router>

@@ -6,6 +6,7 @@ class FreelancerSign extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      status : "freelancer",
       firstName: "",
       lastName: "",
       email: "",
@@ -26,6 +27,7 @@ class FreelancerSign extends React.Component {
   getSign() {
     
     let body = {
+      Status: this.state.status,
       FirstName: this.state.firstName,
       LastName: this.state.lastName,
       Email: this.state.email,
@@ -39,7 +41,9 @@ class FreelancerSign extends React.Component {
       alert("wrong email !");
     }else{
   axios.post('http://127.0.0.1:3008/signup', body)
+      .then(() => alert('Sign Up successfull'))
       .then(response => console.log('[client side SignUp]',response.data))
+      
       .catch(error  => console.log(error));
   }
 
@@ -85,7 +89,7 @@ class FreelancerSign extends React.Component {
             onChange={this.handleChange}
           />
           <br />
-          <Button color="primary"  onClick={this.getSign}>
+          <Button color="primary" type="submit"  onClick={this.getSign}>
             Submit
           </Button>
       
