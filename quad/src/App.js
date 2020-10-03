@@ -64,7 +64,7 @@ console.log('kjj',this.state.loginOut)
               </div>
     }
    if (this.state.handelcomponents === 2){
-     compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}  />
+     compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}   />
    }
 
 

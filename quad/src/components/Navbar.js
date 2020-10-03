@@ -12,7 +12,7 @@ import axios from "axios";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 // create a new component for log in.
-export class Navbar extends React.Component {
+export class   Navbar extends React.Component {
   constructor(props) {
     super(props);
   this.state = {
