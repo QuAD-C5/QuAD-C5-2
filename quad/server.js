@@ -148,7 +148,6 @@ app.post('/jobs', async(req,res) => {
     console.log('req',req.body)
       try{
           const addedJobs = await db.AddJobOffers(req.body);
-  
           res.status(200).send(addedJobs)
       }catch(err) {
           console.log('[server side joboffers insert]',err)
@@ -285,6 +284,7 @@ app.get('/jobs', async (req, res) => {
 //   } catch (e) {
 //     res.send(e);
 //   }
+
 // });
 // =================================================================
 // setting up profile

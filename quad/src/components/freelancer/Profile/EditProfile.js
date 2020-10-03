@@ -8,39 +8,42 @@ class EditProfile extends React.Component {
     this.state = {
       id: this.props.freelance.id,
       file: null,
-      FirstName: this.props.freelance.FirstName || '',
-      LastName : this.props.freelance.LastName || '',
-      Email : this.props.freelance.Email || '', 
-      Age : this.props.freelance.Age || '', 
-      PhoneNumber : this.props.freelance.PhoneNumber || '',
-      Descreption : this.props.freelance.Descreption || '',
-      Skills : this.props.freelance.Skills || '',
+      FirstName: this.props.freelance.FirstName || "",
+      LastName: this.props.freelance.LastName || "",
+      Email: this.props.freelance.Email || "",
+      Age: this.props.freelance.Age || "",
+      PhoneNumber: this.props.freelance.PhoneNumber || "",
+      Descreption: this.props.freelance.Descreption || "",
+      Skills: this.props.freelance.Skills || "",
     };
     this.save = this.save.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeAvatar = this.handleChangeAvatar.bind(this)
+    this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
-  
-   
-   
+
   handleChange(event) {
-    if(event.target.value){
-    this.setState({ [event.target.name]: event.target.value });
-    console.log("=====>" ,event.target.value, this.props.freelance, this.state)
+    if (event.target.value) {
+      this.setState({ [event.target.name]: event.target.value });
+      console.log(
+        "=====>",
+        event.target.value,
+        this.props.freelance,
+        this.state
+      );
+    }
   }
-    }  
-  handleChangeAge(event){
+  handleChangeAge(event) {
     let d = new Date();
-    let n = d.getFullYear()
-    let ag = n - parseInt(event.target.value.substring(0,4))
-    this.setState({ [event.target.name]: ag})
+    let n = d.getFullYear();
+    let ag = n - parseInt(event.target.value.substring(0, 4));
+    this.setState({ [event.target.name]: ag });
   }
   handleChangeAvatar(event) {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0])
-    })
-    console.log("=====>",event.target.files[0])
+      file: URL.createObjectURL(event.target.files[0]),
+    });
+    console.log("=====>", event.target.files[0]);
   }
   // componentDidMount(event){
 
@@ -51,29 +54,30 @@ class EditProfile extends React.Component {
   //   console.log("<=====>",this.state)
   // }
   handelProfile = () => {
-    this.props.handelPublic()
-  }
-  
+    this.props.handelPublic();
+  };
+
   save() {
     let body = {
-      user:
-      {Avatar: this.state.file,
-      FirstName: this.state.FirstName,
-      LastName: this.state.LastName,
-      Email: this.state.Email,
-      Age : this.state.Age, 
-      PhoneNumber : this.state.PhoneNumber,
-      Descreption : this.state.Descreption,
-      Skills : this.state.Skills},
-      id: this.state.id
+      user: {
+        Avatar: this.state.file,
+        FirstName: this.state.FirstName,
+        LastName: this.state.LastName,
+        Email: this.state.Email,
+        Age: this.state.Age,
+        PhoneNumber: this.state.PhoneNumber,
+        Descreption: this.state.Descreption,
+        Skills: this.state.Skills,
+      },
+      id: this.state.id,
     };
     axios
-    .post('http://127.0.0.1:3008/edit',body,)
-    .then(res => {
-      this.setState(res.data)
-    } )
-    .then(this.handelProfile())
-    .catch(err => console.log(err))
+      .post("http://127.0.0.1:3008/edit", body)
+      .then((res) => {
+        this.setState(res.data);
+      })
+      .then(this.handelProfile())
+      .catch((err) => console.log(err));
 
     // this.setState({this.props.})
   }
@@ -84,7 +88,7 @@ class EditProfile extends React.Component {
   //   //   FirstName: this.state.FirstName,
   //   //   LastName: this.state.LastName,
   //   //   Email: this.state.Email,
-  //   //   Age : this.state.Age, 
+  //   //   Age : this.state.Age,
   //   //   PhoneNumber : this.state.PhoneNumber,
   //   //   Descreption : this.state.Descreption,
   //   //   Skills : this.state.Skills};
@@ -92,36 +96,96 @@ class EditProfile extends React.Component {
   //   this.props.profileCallback(body)
   // }
 
-
   render() {
-    
     return (
-        <Form>
+      <Form className="userEditProfile">
         <div>
-        <Label for="avatar">Avatar</Label>
-        {/* <Input type="file" name="avatar" accept="imAge/*" onChange={this.handleChangeAvatar}/> */}
-        <Input type="file" onChange={this.handleChangeAvatar}/>
-        <img src={this.state.file}/>
-        <Label for="FirstName">First Name:</Label>
-        <Input type="text" name="FirstName" onChange={this.handleChange} /><br/>
-        <Label for="LastName">Last Name:</Label>
-        <Input type="text" name="LastName" onChange={this.handleChange}/><br/>
-        <Label for="Email">Email:</Label><br/>
-        <Input type="Email" name="Email" onChange={this.handleChange}/><br/>
-        <Label for="password">Password:</Label><br/>
-        <Input type="password" name="password" onChange={this.handleChange}/><br/>
-        <Label for="Birthday">Birthday:</Label><br/>
-        <Input type="date" name="Age" onChange={this.handleChangeAge}/><br/>
-        <Label for="PhoneNumber">Phone Number:</Label><br/>
-        <Input type="tel" name="PhoneNumber" onChange={this.handleChange}/><br/>
-        <Label for="Descreption">Profile:</Label><br/>
-        <Input type="text" name="Descreption" placeholder="Describe yourself.." onChange={this.handleChange}/><br/>
-        <Label for="Skills">Skills:</Label><br/>
-        <Input type="text" name="Skills" placeholder="Describe your skills.." onChange={this.handleChange}/><br/>
-        <Button onClick={this.handelProfile}>Cancel</Button>
-        <Button onClick={this.save} >Save</Button>
-    </div>
-    </Form>
+          <Label for="avatar">Avatar</Label>
+          {/* <Input type="file" name="avatar" accept="imAge/*" onChange={this.handleChangeAvatar}/> */}
+          <Input type="file" onChange={this.handleChangeAvatar} />
+          <img src={this.state.file} />
+          <Label for="FirstName">First Name:</Label>
+          <Input
+            type="text"
+            name="FirstName"
+            placeholder="first name"
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="LastName">Last Name:</Label>
+          <Input
+            type="text"
+            name="LastName"
+            placeholder="last name"
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="Email">Email:</Label>
+          <br />
+          <Input
+            type="Email"
+            name="Email"
+            placeholder="email"
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="password">Password:</Label>
+          <br />
+          <Input
+            type="password"
+            name="password"
+            placeholder="new password"
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="Birthday">Birthday:</Label>
+          <br />
+          <Input
+            type="date"
+            name="Age"
+            placeholder="age"
+            onChange={this.handleChangeAge}
+          />
+          <br />
+          <Label for="PhoneNumber">Phone Number:</Label>
+          <br />
+          <Input
+            type="tel"
+            name="PhoneNumber"
+            placeholder="phone number"
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="Descreption">Profile:</Label>
+          <br />
+          <Input
+            type="text"
+            name="Descreption"
+            placeholder="Describe yourself.."
+            onChange={this.handleChange}
+          />
+          <br />
+          <Label for="Skills">Skills:</Label>
+          <br />
+          <Input
+            type="text"
+            name="Skills"
+            placeholder="Describe your skills.."
+            onChange={this.handleChange}
+          />
+          <br />
+          <Button
+            color="danger"
+            className=" inEdit"
+            onClick={this.handelProfile}
+          >
+            Cancel
+          </Button>
+          <Button color="success" className=" inEdit" onClick={this.save}>
+            Save
+          </Button>
+        </div>
+      </Form>
     );
   }
 }

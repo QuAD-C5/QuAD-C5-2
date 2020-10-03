@@ -34,16 +34,21 @@ const getUser = function (email) {
 const editUser = function (user) {
   console.log(`=======<huih"`);
   return new Promise((resolve, reject) => {
-
-
-    const {user:use,id} = user
+    const { user: use, id } = user;
     // console.log(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`);
-    
-    connection.query(`UPDATE  users SET ${Object.entries(use).filter(pair =>!!pair[1]).map(pair =>[pair[0],`"${pair[1]}"`].join("=") ).join(", ")} WHERE id = '${id}'`, (err, data) => {
-      if (err) { reject(err) }
-      resolve(data)
 
-    });
+    connection.query(
+      `UPDATE  users SET ${Object.entries(use)
+        .filter((pair) => !!pair[1])
+        .map((pair) => [pair[0], `"${pair[1]}"`].join("="))
+        .join(", ")} WHERE id = '${id}'`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      }
+    );
   });
 };
 
@@ -60,7 +65,6 @@ const jobOffers = function () {
     });
   });
 };
-
 
 // add application
 const apply = function (Ids) {
@@ -121,14 +125,12 @@ const delApp = async (data) => {
     let result = await query(
       `DELETE FROM applications WHERE userId = ${data.userId} AND jobOfferId=${data.jobOfferId}`
     );
-    console.log({result});
+    console.log({ result });
     return result;
   } catch (err) {
     console.log(err);
   }
 };
-
-
 
 /////////////////////////////// COMPANY SECTION ///////////////////////////////////////
 // Add company in DB
@@ -148,15 +150,17 @@ const addCompanySignUpData = function (Cdata) {
 
 const GetCompanySignUpData = function (email) {
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM company where Email = '${email}'`, (err, data) => {
-      if (err) {
-        reject(err);
+    connection.query(
+      `SELECT * FROM company where Email = '${email}'`,
+      (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
       }
-      resolve(data);
-    });
+    );
   });
 };
-
 
 // -*- bringing company informations for the company profile -*-\\
 const companyInfo = () => {
@@ -169,7 +173,6 @@ const companyInfo = () => {
     });
   });
 };
-
 
 // const getUsersWhoApplied = function () {
 //   return new Promise((resolve, reject) => {
@@ -198,10 +201,8 @@ const companyInfo = () => {
 //   });
 // };
 
-
 // ==========================================================================
 //===========JOB OFFERS ============
-
 
 // inserting job offers AHMED
 
@@ -209,9 +210,10 @@ const AddJobOffers = function (job) {
   console.log("jobs =======>", job);
   return new Promise((resolve, reject) => {
     connection.query(
-//       `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
+      //       `INSERT INTO joboffers (companyId ,JobTitle ,Description) VALUES ('${job.companyId}','${job.JobTitle}','${job.Description}')`,
 
-      `INSERT INTO joboffers SET ?`, job,
+      `INSERT INTO joboffers SET ?`,
+      job,
 
       (err, jobData) => {
         if (err) {
@@ -262,10 +264,6 @@ const AddJobOffers = function (job) {
 //   });
 // };
 
-
-
-
-
 // module.exports = {
 
 //   getUser,
@@ -289,10 +287,6 @@ const AddJobOffers = function (job) {
 
 ////////////////////// SLIM's REPO
 
-
-
-
-
 // get the signed in freelancer
 // up there
 // add application
@@ -314,9 +308,6 @@ const GetjobOffers = function () {
   });
 };
 
-
-
-
 module.exports = {
   getUser,
   addUser,
@@ -327,15 +318,13 @@ module.exports = {
   delApp,
 
   ////// Company side
-    GetjobOffers,
+  GetjobOffers,
   GetCompanySignUpData,
   AddJobOffers,
   addCompanySignUpData,
   companyInfo,
 
-
   // getUsersWhoApplied,
   // getAppliedJobsByusers
-
 };
 /////////////////////////////////////

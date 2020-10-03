@@ -39,6 +39,7 @@ class AddPost extends Component {
 
   PostAnOfferJob() {
     console.log("post job offer");
+
     axios
       .post("http://127.0.0.1:3008/jobs", this.state)
       .then((res) => console.log(res, "RES"))
@@ -63,7 +64,7 @@ class AddPost extends Component {
       <Form>
         <Row className="addPost">
           <Col sm="6">
-            <Card className="addpostCard" body>
+            <Card color="muted" className="addpostCard" body>
               <CardBody>
                 <CardTitle>Company name</CardTitle>
                 <CardTitle>Job title</CardTitle>
