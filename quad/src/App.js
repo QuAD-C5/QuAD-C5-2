@@ -68,10 +68,10 @@ componentDidUpdate(previousProps, previousState) {
               </div>
     }
    if (this.state.handelcomponents === 2){
-     compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}  />
+     compo = <FreelancerSection freelancer={this.state.user} logoutFunc={this.logoutFunc}   />
    }
    if (this.state.handelcomponents === 3){
-     compo = <CompanySection company={this.state.user}/>
+     compo = <CompanySection company={this.state.user} logoutFunc={this.logoutFunc} />
    }
 
 

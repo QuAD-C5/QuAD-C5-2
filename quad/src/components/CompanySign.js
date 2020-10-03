@@ -37,6 +37,7 @@ class CompanySign extends React.Component {
     }else{
     axios
       .post("http://127.0.0.1:3008/signup/company", body)
+      .then(() => alert('Sign Up successfull'))
       .then(response => console.log('[Company side SignUp]',response.data))
       .catch(error  => console.log(error));
       }

@@ -20,7 +20,12 @@ export default class FreelancerSection extends Component {
     //     return true;
     //   }
       
-      
+    componentDidUpdate(prevProps) {
+        // Utilisation classique (pensez bien à comparer les props) :
+        if (this.props.freelancer !== prevProps.freelancer) {
+          this.fetchData(this.props.freelancer);
+        }
+      }
       
     //   componentDidUpdate(previousProps, previousState) {
     //     console.log('FreelancerSection did update')
@@ -35,7 +40,7 @@ export default class FreelancerSection extends Component {
             <Router>
                 <UserNavBar logoutFunc={this.props.logoutFunc}/>  
                 <Route exact path="/" render={() => <Home user={this.props.freelancer} />}/>
-                <Route path="/Profile" render={() => <FreelancerProfile freelancer={this.props.freelancer} />}/>
+                <Route path="/Profile" render={() => <FreelancerProfile freelancer={this.props.freelancer} hhhh={this.props.hhhh} />}/>
                 <Route path="/Aplications" render={() => <Aplications freelancer={this.props.freelancer.id} />} />
                 <Route path="/logout" component={Aplications} />
             </Router>

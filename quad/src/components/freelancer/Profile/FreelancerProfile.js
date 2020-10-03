@@ -7,22 +7,29 @@ class FreelancerProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      budy: null,
+      budy: this.props.freelancer,
       profileType: 1 };
     this.handelEditProfil = this.handelEditProfil.bind(this);
     this.handelPublicProfile = this.handelPublicProfile.bind(this);
     // // this.callbackFunction = this.callbackFunction.bind(this)
   }
 
-// componentDidMount(){
-//   console.log ('okok',this.state.budy);
-// }
-
-//   callbackFunction = (childData) => {
-   
-//     this.setState({budy: childData})
-    
-// }
+componentDidMount(){
+  console.log ('okok',this.state.budy);
+}
+componentDidUpdate(prevProps) {
+  // Utilisation classique (pensez bien à comparer les props) :
+  if (this.props.freelancer !== prevProps.freelancer) {
+    this.fetchData(this.props.freelancer);
+  }
+}
+  callbackFunction = (childData) => {
+    let isMounted = true;
+    if (isMounted){
+    this.setState({budy: childData})
+  }
+   return () => {isMounted = false};
+}
    
   handelEditProfil() {
     if (this.state.profileType === 1) {
@@ -41,10 +48,10 @@ class FreelancerProfile extends React.Component {
     let compo;
     let edit;
     if (this.state.profileType === 1) {
-      compo = <PublicProfile freelance={this.props.freelancer} />;
+      compo = <PublicProfile freelance={this.state.budy}  />;
     }
     if (this.state.profileType === 2){
-      compo = <EditProfile freelance={this.props.freelancer} handelPublic={this.handelPublicProfile} profileCallback = {this.callbackFunction} />;
+      compo = <EditProfile freelance={this.props.freelancer} handelPublic={this.handelPublicProfile} profileCallback = {this.callbackFunction}  />;
     }
     if (this.state.profileType === 1) {
       edit = <Edit handelEdit={this.handelEditProfil} />;

@@ -17,7 +17,9 @@ import Post from './components/company/Home/Posts/Post.js'
 // import Post from './components/company/Home/Posts/Post.js'
 
 
-import CompanySection from "./components/company/CompanySection"
+
+// import CompanySection from "./components/company/CompanySection"
+
 
 // ReactDOM.render(
 //   <React.StrictMode>

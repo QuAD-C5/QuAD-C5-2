@@ -8,13 +8,14 @@ class EditProfile extends React.Component {
     this.state = {
       id: this.props.freelance.id,
       file: null,
-      FirstName: this.props.freelance.FirstName || "",
-      LastName: this.props.freelance.LastName || "",
-      Email: this.props.freelance.Email || "",
-      Age: this.props.freelance.Age || "",
-      PhoneNumber: this.props.freelance.PhoneNumber || "",
-      Descreption: this.props.freelance.Descreption || "",
-      Skills: this.props.freelance.Skills || "",
+      FirstName: this.props.freelance.FirstName || '',
+      LastName : this.props.freelance.LastName || '',
+      Email : this.props.freelance.Email || '', 
+      Age : this.props.freelance.Age || '', 
+      PhoneNumber : this.props.freelance.PhoneNumber || '',
+      Description : this.props.freelance.Description || '',
+      Skills : this.props.freelance.Skills || '',
+
     };
     this.save = this.save.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,22 +23,26 @@ class EditProfile extends React.Component {
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
 
+  
+
+   
+   
+
   handleChange(event) {
-    if (event.target.value) {
-      this.setState({ [event.target.name]: event.target.value });
-      console.log(
-        "=====>",
-        event.target.value,
-        this.props.freelance,
-        this.state
-      );
-    }
+    if(event.target.value){
+    this.setState({ [event.target.name]: event.target.value });
+    console.log("=====>" , this.props.freelance, this.state)
+
+
+
   }
   handleChangeAge(event) {
     let d = new Date();
+
     let n = d.getFullYear();
     let ag = n - parseInt(event.target.value.substring(0, 4));
     this.setState({ [event.target.name]: ag });
+
   }
   handleChangeAvatar(event) {
     this.setState({
@@ -59,28 +64,53 @@ class EditProfile extends React.Component {
 
   save() {
     let body = {
-      user: {
-        Avatar: this.state.file,
-        FirstName: this.state.FirstName,
-        LastName: this.state.LastName,
-        Email: this.state.Email,
-        Age: this.state.Age,
-        PhoneNumber: this.state.PhoneNumber,
-        Descreption: this.state.Descreption,
-        Skills: this.state.Skills,
-      },
-      id: this.state.id,
+
+      user:
+      {Avatar: this.state.file,
+      FirstName: this.state.FirstName,
+      LastName: this.state.LastName,
+      Email: this.state.Email,
+      Age : this.state.Age, 
+      PhoneNumber : this.state.PhoneNumber,
+      Description : this.state.Description,
+      Skills : this.state.Skills},
+      id: this.state.id
     };
     axios
-      .post("http://127.0.0.1:3008/edit", body)
-      .then((res) => {
-        this.setState(res.data);
-      })
-      .then(this.handelProfile())
-      .catch((err) => console.log(err));
+    .post('http://127.0.0.1:3008/edit',body)
+    .then(res => {
+      this.setState(res.data)
+
+    } )
+    // .then(this.handelEditData())
+    .then(this.handelProfile())
+    
+    .catch(err => console.log(err))
+
+//       user: {
+//         Avatar: this.state.file,
+//         FirstName: this.state.FirstName,
+//         LastName: this.state.LastName,
+//         Email: this.state.Email,
+//         Age: this.state.Age,
+//         PhoneNumber: this.state.PhoneNumber,
+//         Descreption: this.state.Descreption,
+//         Skills: this.state.Skills,
+//       },
+//       id: this.state.id,
+//     };
+//     axios
+//       .post("http://127.0.0.1:3008/edit", body)
+//       .then((res) => {
+//         this.setState(res.data);
+//       })
+//       .then(this.handelProfile())
+//       .catch((err) => console.log(err));
+
 
     // this.setState({this.props.})
   }
+
 
   // sendData = () => {
   //   // let body = {
@@ -95,6 +125,7 @@ class EditProfile extends React.Component {
   //   let body = "wiiiow"
   //   this.props.profileCallback(body)
   // }
+
 
   render() {
     return (
