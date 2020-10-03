@@ -13,7 +13,7 @@ class EditProfile extends React.Component {
       Email : this.props.freelance.Email || '', 
       Age : this.props.freelance.Age || '', 
       PhoneNumber : this.props.freelance.PhoneNumber || '',
-      Descreption : this.props.freelance.Descreption || '',
+      Description : this.props.freelance.Description || '',
       Skills : this.props.freelance.Skills || '',
     };
     this.save = this.save.bind(this);
@@ -21,11 +21,15 @@ class EditProfile extends React.Component {
     this.handleChangeAvatar = this.handleChangeAvatar.bind(this)
     this.handleChangeAge = this.handleChangeAge.bind(this);
   }
- 
+  
+
+   
+   
+
   handleChange(event) {
     if(event.target.value){
     this.setState({ [event.target.name]: event.target.value });
-    console.log("=====>" ,event.target.value, this.props.freelance, this.state)
+    console.log("=====>" , this.props.freelance, this.state)
   }
     }  
   handleChangeAge(event){
@@ -33,6 +37,7 @@ class EditProfile extends React.Component {
     let n = d.getFullYear()
     let ag = n - parseInt(event.target.value.substring(0,4))
     this.setState({ [event.target.name]: ag})
+    console.log('fpzkfpoke',ag)
   }
   handleChangeAvatar(event) {
     this.setState({
@@ -40,14 +45,14 @@ class EditProfile extends React.Component {
     })
     console.log("=====>",event.target.files[0])
   }
-  componentDidMount(event){
+  // componentDidMount(event){
 
-    this.setState(state => {
-      state = this.props.freelance
+  //   this.setState(state => {
+  //     state = this.props.freelance
 
-    })
-    console.log("<=====>",this.state)
-  }
+  //   })
+  //   console.log("<=====>",this.state)
+  // }
   handelProfile = () => {
     this.props.handelPublic()
   }
@@ -61,34 +66,37 @@ class EditProfile extends React.Component {
       Email: this.state.Email,
       Age : this.state.Age, 
       PhoneNumber : this.state.PhoneNumber,
-      Descreption : this.state.Descreption,
+      Description : this.state.Description,
       Skills : this.state.Skills},
       id: this.state.id
     };
     axios
-    .post('http://127.0.0.1:3008/edit',body,)
+    .post('http://127.0.0.1:3008/edit',body)
     .then(res => {
       this.setState(res.data)
+
     } )
+    // .then(this.handelEditData())
     .then(this.handelProfile())
+    
     .catch(err => console.log(err))
 
     // this.setState({this.props.})
   }
 
-  // sendData = () => {
-  //   // let body = {
-  //   //   Avatar: this.state.file,
-  //   //   FirstName: this.state.FirstName,
-  //   //   LastName: this.state.LastName,
-  //   //   Email: this.state.Email,
-  //   //   Age : this.state.Age, 
-  //   //   PhoneNumber : this.state.PhoneNumber,
-  //   //   Descreption : this.state.Descreption,
-  //   //   Skills : this.state.Skills};
-  //   let body = "wiiiow"
-  //   this.props.profileCallback(body)
-  // }
+  sendData = () => {
+    const budy = {
+      Avatar: this.state.file,
+      FirstName: this.state.FirstName,
+      LastName: this.state.LastName,
+      Email: this.state.Email,
+      Age : this.state.Age, 
+      PhoneNumber : this.state.PhoneNumber,
+      Descreption : this.state.Descreption,
+      Skills : this.state.Skills};
+    
+    this.props.profileCallback(budy)
+  }
 
 
   render() {

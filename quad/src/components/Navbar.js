@@ -12,24 +12,27 @@ import axios from "axios";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 
 // create a new component for log in.
-export class Navbar extends React.Component {
+export class   Navbar extends React.Component {
   constructor(props) {
     super(props);
   this.state = {
     email: "",
     password: "",
     checkProfileType: true,
-    loginType: "Freelancer"
+    loginType: "Company",
   };
   this.handlePfileType = this.handlePfileType.bind(this);
   }
 
+  // componentDidMount(){
+  //   this.setState({loginType : this.props.userType})
+  // }
 //choice the type of profile type logging
 handlePfileType(){
   if(this.state.checkProfileType){
-  this.setState({checkProfileType: false, loginType: "Company"});
+  this.setState({ checkProfileType: false, loginType: "Freelancer" });
   }else{
-    this.setState({checkProfileType: true, loginType: "Freelancer"});
+    this.setState({checkProfileType: true, loginType: "Company"});
   }
   console.log(this.state.checkProfileType)
 }
@@ -49,12 +52,16 @@ handlePfileType(){
       email: this.state.email,
       password: this.state.password
     };
-    console.log('jopk',this.props.loginOut)
-    
+    // condition for rendering the section
+    if(this.state.checkProfileType){
     axios.post("http://127.0.0.1:3008/login", user)
       .then(response => this.props.homeFreelancer(response.data))
       .catch(err =>  console.log('[client side login error]',err) );
-    
+    } else {
+    axios.post('http://127.0.0.1:3008/login/company', user)
+    .then(response => this.props.homeFreelancer(response.data))
+    .catch(err =>  console.log('[client side login error]',err) );
+    }
   };
 
 
@@ -69,14 +76,6 @@ handlePfileType(){
                 QuAD
               </li>
               <div className="loginBar">
-              <li className="btn">
-                  <Button
-                    onClick={this.handlePfileType}
-                    id="submitLog"
-                  >
-                    {this.state.loginType}
-                  </Button>
-                </li>
                 <li className="btn">
                   <Input
                     className="input"
@@ -98,10 +97,12 @@ handlePfileType(){
                   />
                 </li>
                 <li className="btn">
-                  <Button
-                    onClick={this.handleSubmit}
-                    id="submitLog"
-                  >
+                  <Button onClick={this.handlePfileType} id="submitLog">
+                    {this.state.loginType}
+                  </Button>
+                </li>
+                <li className="btn">
+                  <Button onClick={this.handleSubmit} id="submitLog">
                     Log in
                   </Button>
                 </li>
