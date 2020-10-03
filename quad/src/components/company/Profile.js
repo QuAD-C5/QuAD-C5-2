@@ -71,7 +71,7 @@ export default class Profile extends Component {
     // src={this.state.comapnyinfo.ImageSrc}
 
     return (
-      <div>
+      <div className="profileComponent">
         <Card className="company-profile">
           <Col xs={6} md={4}>
             <Image
@@ -93,6 +93,7 @@ export default class Profile extends Component {
             </CardText>
           </CardBody>
           <Button
+          className="editProfileFrre"
             outline
             color="success"
             onClick={this.openModalEditByClick.bind(this)}
@@ -101,11 +102,7 @@ export default class Profile extends Component {
           </Button>
         </Card>
         <Card className="company-profile">
-          <CardHeader tag="h3">Rate this company</CardHeader>
-          <CardBody className="starts">
-            {/* <Rater total={5} rating={0} /> */}
-          </CardBody>
-          <CardFooter className="text-muted">Footer</CardFooter>
+          <CardFooter className="text-muted">" "</CardFooter>
 
           <Modal isOpen={this.state.openModalEdit === true}>
             <ModalHeader>Edit company information</ModalHeader>

@@ -26,10 +26,10 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-            <AddPost company={this.props.company}/>
-            <Post company={this.props.company} offers={this.state.jobs}/>
-            </div>
+          <div className="HomeContainer">
+            <AddPost company={this.props.company} />
+            <Post company={this.props.company} offers={this.state.jobs} />
+          </div>
         );
     }
 }

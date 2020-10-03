@@ -1,4 +1,53 @@
 /* navbar for the filed */
+/* body{
+  background-color:black;
+} */
+
+/*------------- styling all the components by divs -----------*/
+
+.HomeContainer {
+  position: relative;
+  top: -1vw;
+  background-color: #e5e7e9;
+}
+
+.profileComponent {
+  position: relative;
+  top: -1vw;
+  height:50vw;
+  background-color: #e5e7e9;
+}
+
+.editProfileFrre{
+  width:10%;
+  position: relative;
+  left:55vw;
+  top:-22vw;
+}
+
+.userEditProfile{
+  width: 50%;
+  position: relative;
+  left: 25vw;
+}
+
+.inEdit{
+  margin:2%;
+  position: relative;
+  left: 37vw;
+}
+
+#useravatar{
+  height:60%;
+  width:100%
+}
+
+.divuserProfile{
+  position: relative;
+  left:21vw;
+}
+/* ----------------------------------------------------------- */
+
 .bar {
   background-color: black;
   height: 4.4vw;
@@ -74,15 +123,31 @@
 .feed {
   position: relative;
   width: 100%;
+  /* border: 1px solid;
+  border-color: black; */
+}
+/* .container {
+  border: 1px solid;
+  border-color: black;
+
+} */
+
+.addpostCard {
+  font-size: 20px;
+}
+
+.cardC {
+  background-color: black;
 }
 
 .feedCard {
   width: 100%;
   left: 0vw;
   top: -64.5%;
+  background-color: black;
 }
 
-.feedCardS{
+.feedCardS {
   position: relative;
 }
 
@@ -138,139 +203,136 @@
   width: 25%;
 }
 
-.comapny-avatar{
-   border-radius: 50%;
-   position: relative;
-   left:2vw;
-   top:1vw;
+.comapny-avatar {
+  border-radius: 50%;
+  position: relative;
+  left: 2vw;
+  top: 1vw;
 }
 
-.company-profile{
-  width:65%;
+.company-profile {
+  width: 65%;
   position: relative;
-  left:15vw;
-  top:3vw;
+  left: 15vw;
+  top: 3vw;
 }
-.starts{
+.starts {
   position: relative;
-  left:35%;
+  left: 35%;
 }
-.addpostCard{
+.addpostCard {
   position: relative;
-  left:27vw;
+  left: 27vw;
 }
 
-.freelancerApplied{
-    position: relative;
-    float: right;
-    margin: 0.5%;
+.freelancerApplied {
+  position: relative;
+  float: right;
+  margin: 0.5%;
 }
 
-#exampleText{
+#exampleText {
   width: 120%;
 }
 
-#companyName{
+#companyName {
   position: relative;
-  top:-11vw;
-  left:17vw;
+  top: -11vw;
+  left: 17vw;
   font-size: 50px;
 }
 
-#companyEmail{
+#companyEmail {
   position: relative;
-  top:-10vw;
-  left:17vw;
+  top: -10vw;
+  left: 17vw;
   font-size: 20px;
 }
-#companyLocation{
+#companyLocation {
   position: relative;
-  top:-9vw;
-  left:17vw;
+  top: -9vw;
+  left: 17vw;
   font-size: 20px;
 }
 
-#UserFName{
-position: relative;
-left:1vw;
-font-size:30px;
+#UserFName {
+  position: relative;
+  left: 1vw;
+  font-size: 30px;
 }
-#UserLName{
-position: relative;
-left:1vw;
-font-size:25px;
+#UserLName {
+  position: relative;
+  left: 1vw;
+  font-size: 25px;
 }
-#UserAge{
-position: relative;
-left:1vw;
-font-size:20px;
+#UserAge {
+  position: relative;
+  left: 1vw;
+  font-size: 20px;
 }
-#UserEmail{
-position: relative;
-left:1vw;
-font-size:20px;
+#UserEmail {
+  position: relative;
+  left: 1vw;
+  font-size: 20px;
 }
-#UserPhone{
-position: relative;
-left:1vw;
-font-size:20px;
+#UserPhone {
+  position: relative;
+  left: 1vw;
+  font-size: 20px;
 }
-#UserDescription{
-position: relative;
-left:1vw;
-font-size:20px;
+#UserDescription {
+  position: relative;
+  left: 1vw;
+  font-size: 20px;
 }
-#UserSkills{
-position: relative;
-left:1vw;
-font-size:20px;
+#UserSkills {
+  position: relative;
+  left: 1vw;
+  font-size: 20px;
 }
 
-.userProfile{
-  width:43%;
+.userProfile {
+  width: 43%;
   position: relative;
-  left:8vw;
+  left: 8vw;
 }
-.userInfoCard{
+.userInfoCard {
   position: relative;
-  left:15vw;
-  top:-8vw;
+  left: 15vw;
+  top: -8vw;
   width: 60%;
-  height:350px;
+  height: 350px;
 }
-.feeds{
+.feeds {
   position: relative;
-  left:25vw;
-  top:30vw;
-  
+  left: 25vw;
+  top: 30vw;
 }
 
-#msgProfile{
+#msgProfile {
   position: relative;
-  top:-2vw;
-
+  top: -2vw;
 }
 
-
-#welcomeText{
+#welcomeText {
   position: absolute;
-  width:50%;
-  top:15vw;;
-  left:10vw;
-  font-size:25px;
-  font-family: 'Source Sans Pro', sans-serif;
+  width: 50%;
+  top: 15vw;
+  left: 10vw;
+  font-size: 25px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-#editProfile{
+#editProfile {
   position: relative;
-  left:40vw;
-  top:-6vw;
+  left: 60vw;
+  top: -6vw;
 }
 
-.post{
+.post {
   position: relative;
-  left:25vw;
-  top:5vw;
+  left: 25vw;
+  top: 5vw;
   margin-bottom: 5%;
-  width:50%;
+  width: 50%;
 }
